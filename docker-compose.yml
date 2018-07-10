@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    databases:
+        build:
+            context: ./db
+        volumes:
+            - /mnt/data/backups/db/scripts:/backups/db/scripts
+            - /mnt/data/backups/db/data:/backups/db/data
+            - /mnt/data/backups/db/pgpass.conf:/root/.pgpass
+        command: /backups/db/scripts/entrypoint.sh
